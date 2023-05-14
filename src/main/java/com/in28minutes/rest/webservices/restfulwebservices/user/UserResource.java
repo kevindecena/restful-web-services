@@ -38,7 +38,7 @@ public class UserResource {
         service.deleteById(id);
     }
 
-    @PostMapping(" /users")
+    @PostMapping("/users")
     public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
         User savedUser = service.save(user);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
