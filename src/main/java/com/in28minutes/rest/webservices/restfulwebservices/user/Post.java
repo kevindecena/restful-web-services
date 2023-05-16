@@ -2,6 +2,7 @@ package com.in28minutes.rest.webservices.restfulwebservices.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Entity
@@ -11,11 +12,13 @@ public class Post {
     @GeneratedValue
     private Integer Id;
 
+    @Size(min = 10)
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     private User user;
+
 
     public Integer getId() {
         return Id;
@@ -31,6 +34,14 @@ public class Post {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
