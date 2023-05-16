@@ -18,32 +18,32 @@ public class VersioningPersonController {
     }
 
 
-    @GetMapping(path = "/person", params = "version=1")//URI Versioning
+    @GetMapping(path = "/person", params = "version=1")//Request Param Versioning
     public PersonV1 getFirstVersionOfPersonRequestParameter() {
         return new PersonV1("Bob Charlie");
     }
 
-    @GetMapping(path = "/person", params = "version=2")//URI Versioning
+    @GetMapping(path = "/person", params = "version=2")//Request Param Versioning
     public PersonV2 getSecondVersionOfPersonRequestParameter() {
         return new PersonV2(new Name("Bob", "Charlie"));
     }
 
-    @GetMapping(path = "/person/header", headers = "X-API-VERSION=1")//URI Versioning
+    @GetMapping(path = "/person/header", headers = "X-API-VERSION=1")//Custom Header  Versioning
     public PersonV1 getFirstVersionOfPersonRequestHeader() {
         return new PersonV1("Bob Charlie");
     }
 
-    @GetMapping(path = "/person/header", headers = "X-API-VERSION=2")//URI Versioning
+    @GetMapping(path = "/person/header", headers = "X-API-VERSION=2")//Custom Header  Versioning
     public PersonV2 getSecondVersionOfPersonRequestHeader() {
         return new PersonV2(new Name("Bob", "Charlie"));
     }
 
-    @GetMapping(path = "/person/accept", produces = "application/vnd.company.app-v1+json")//URI Versioning
+    @GetMapping(path = "/person/accept", produces = "application/vnd.company.app-v1+json")//Media type Versioning
     public PersonV1 getFirstVersionOfPersonAcceptHeader() {
         return new PersonV1("Bob Charlie");
     }
 
-    @GetMapping(path = "/person/accept", produces = "application/vnd.company.app-v2+json")//URI Versioning
+    @GetMapping(path = "/person/accept", produces = "application/vnd.company.app-v2+json")//Media type Versioning
     public PersonV2 getSecondVersionOfPersonAcceptHeader() {
         return new PersonV2(new Name("Bob", "Charlie"));
     }
